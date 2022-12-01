@@ -1,15 +1,22 @@
 {
-    "name": "Ecole Direct Mean",
-    "version": "0.1",
-    "description": "Calculate your means",
-    "manifest_version": 2,
-    "author": "Quentin Riggi",
-	"content_security_policy": "script-src": ["self", "unsafe-inline"]},
-    "action":{
-        "default_popup": "index.html",
-        "default_title": "Ecole Direct"
-    },
-	"permissions": [
-		"activeTab"
-	]
+	"name": "Ecole Direct Mean",
+	"description": "Allows you to see your mean",
+	"version": "1.0",
+	"manifest_version": 3,
+	"permissions": ["storage", "contextMenus", "activeTab","background"],
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"run_at": "document_end",
+			"js": ["background.js"]
+		}
+	],
+	"action": {
+		"default_popup": "popup.html"
+	},
+	"externally_connectable": {
+        "ids": ["niemhokcgkhmekifpndmhodadedkmgpd"],
+        "matches": ["<all_urls>"],
+        "accepts_tls_channel_id": false
+    }
 }
